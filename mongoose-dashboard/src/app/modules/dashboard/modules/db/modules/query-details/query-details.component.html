@@ -1,0 +1,19 @@
+<cms-view-details [result]="result">
+    <div class="db-query-view-details-container flex flex-column p-3 gap-2 f-height" content>
+        @if (result.data$ | async; as data) {
+        <div class="flex flex-column gap-2">
+            <span class="text-900 text-3xl font-meduim">
+                {{ data.collectionName }}.{{ data.method }}{{"()"}}:
+            </span>
+            <div [innerHTML]="(data.collectionName + '.' + data.method + '(' + (data.query ? (data.query | json) + ', '  : '') + (data.options ? (data.options | json) : '') + ')') 
+                | language : 'typescript'
+                | markdown
+                | async">
+            </div>
+            <span class="text-900 text-xl font-meduim">
+                {{ 'createdAt' | translate }}: {{ data.createdAt | date:"yyyy-MM-dd HH:mm":"UTC" }}
+            </span>
+        </div>
+        }
+    </div>
+</cms-view-details>

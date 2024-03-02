@@ -1,0 +1,73 @@
+<cms-view-details [result]="result">
+    <div class="request-view-details-container flex flex-column p-3 gap-2 f-height" content>
+        @if (result.data$ | async; as data) {
+        <div class="flex flex-column gap-2">
+            <span class="text-900 text-3xl font-meduim">
+                {{ data.method }} - {{ baseUrl }}{{ data.url }}
+            </span>
+            <p-divider />
+
+            <!-- request info -->
+            <span class="text-900 text-2xl font-meduim">
+                {{ 'request' | translate }} {{ 'info' | translate }}:
+            </span>
+            <div [innerHTML]="(requestInfo | json) | language : 'json' | markdown | async"></div>
+
+            @if (data.request?.headers; as headers) {
+            <!-- request headers -->
+            <span class="text-900 text-2xl font-meduim">
+                {{ 'request' | translate }} {{ 'headers' | translate }}:
+            </span>
+            <div [innerHTML]="(headers | json) | language : 'json' | markdown | async"></div>
+            }
+
+            @if (data.request?.queries; as queries) {
+            <!-- request queries -->
+            <span class="text-900 text-2xl font-meduim">
+                {{ 'request' | translate }} {{ 'queries' | translate }}:
+            </span>
+            <div [innerHTML]="(queries | json) | language : 'json' | markdown | async"></div>
+            }
+
+            @if (data.request?.body; as body) {
+            <!-- request body -->
+            <span class="text-900 text-2xl font-meduim">
+                {{ 'request' | translate }} {{ 'body' | translate }}:
+            </span>
+            <div [innerHTML]="(body | json) | language : 'json' | markdown | async"></div>
+            }
+
+            <p-divider />
+
+            <!-- response info -->
+            <span class="text-900 text-2xl font-meduim">
+                {{ 'response' | translate }} {{ 'info' | translate }}:
+            </span>
+            <div [innerHTML]="(responseInfo | json) | language : 'json' | markdown | async"></div>
+
+            <!-- response body -->
+            <span class="text-900 text-2xl font-meduim">
+                {{ 'response' | translate }} {{ 'body' | translate }}:
+            </span>
+            <div [innerHTML]="(data.response| json) | language : 'json' | markdown | async"></div>
+
+
+            @if (exception) {
+            <!-- response exception -->
+            <span class="text-900 text-2xl font-meduim">
+                {{ 'response' | translate }} {{ 'exception' | translate }}:
+            </span>
+            <div [innerHTML]="(exception) | language : 'json' | markdown | async"></div>
+            }
+
+            @if (data.responseHeaders; as headers) {
+            <!-- request headers -->
+            <span class="text-900 text-2xl font-meduim">
+                {{ 'response' | translate }} {{ 'headers' | translate }}:
+            </span>
+            <div [innerHTML]="(headers | json) | language : 'json' | markdown | async"></div>
+            }
+        </div>
+        }
+    </div>
+</cms-view-details>

@@ -1,0 +1,17 @@
+<cms-nav-container [logo]="'assets/svgs/nestjs-48.svg'" [navigationItems]="navigationItems">
+    <!-- toolbar -->
+    <cms-toolbar topContent>
+        <div class="flex flex-row gap-2 justify-content-between align-items-center" startContent>
+            <img src="assets/svgs/nestjs-48.svg" alt="logo" height="35">
+            <span class="text-900 text-xl font-medium">NestJS Monitoring</span>
+        </div>
+        <div class="flex flex-row gap-3 justify-content-between align-items-center" endContent>
+            <cms-theme-switcher />
+        </div>
+    </cms-toolbar>
+
+    <!-- body -->
+    <div bodyContent>
+        <router-outlet />
+    </div>
+</cms-nav-container>

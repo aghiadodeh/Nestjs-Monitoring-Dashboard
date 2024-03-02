@@ -1,0 +1,27 @@
+<cms-view-details [result]="result">
+    <div class="job-view-details-container flex flex-column p-3 gap-2 f-height" content>
+        @if (result.data$ | async; as data) {
+        <div class="flex flex-column gap-2">
+            <span class="text-900 text-3xl font-meduim">
+                {{ data.name }} - {{ data.id }}:
+            </span>
+            <span class="text-900 text-xl font-meduim">
+                {{ 'success' | translate }}: {{ data.success }}
+            </span>
+            <span class="text-900 text-xl font-meduim">
+                {{ 'metadata' | translate }}:
+            </span>
+
+            @if (data.metadata; as metadata) {
+                @for (data of metadata; track data) {
+                    <div [innerHTML]="(data | json) | language : 'json' | markdown | async"></div>
+                }
+            }
+
+            <span class="text-900 text-xl font-meduim">
+                {{ 'createdAt' | translate }}: {{ data.createdAt | date:"yyyy-MM-dd HH:mm":"UTC" }}
+            </span>
+        </div>
+        }
+    </div>
+</cms-view-details>

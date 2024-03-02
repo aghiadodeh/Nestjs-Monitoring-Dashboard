@@ -1,0 +1,9 @@
+<div class="w-full f-height overflow-auto flex flex-column">
+    <app-analyze-filter />
+    @if ((analyzeService.requestAnalyze.loading$ | async)) {
+        <p-progressBar mode="indeterminate" [style]="{height: '2.5px'}"/>
+    }
+    <div class="h-full flex flex-column py-3 px-4">
+        <app-analyze-charts />
+    </div>
+</div>

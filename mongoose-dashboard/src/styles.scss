@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+cms-navigation-menu {
+    min-width: 250px
+}
+
+.p-accordion p-accordiontab .p-accordion-tab {
+    margin-bottom: 0 !important;
+}
+
+.requests-cms-list p-table table td span {
+    display: flex;
+    max-width: 350px;
+    word-break: break-all;
+}
+
+.request-view-details-container {
+    pre {
+        width: max-content;
+        max-width: 80vw;
+        min-width: 50vw;
+        overflow-x: auto;
+    }
+}
+
+.db-table-query {
+    pre {
+        background: unset !important;
+    }
+}

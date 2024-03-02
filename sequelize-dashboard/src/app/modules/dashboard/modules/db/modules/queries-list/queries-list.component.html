@@ -1,0 +1,12 @@
+<cms-list class="db-cms-list" [templates]="{
+    'query': dbQueryTemplate,
+}"/>
+
+<!-- db query -->
+<ng-template let-db #dbQueryTemplate>
+    <div class="db-table-query flex align-items-center justify-content-center">
+        @if (db.query; as query) {
+            <div class="query" [innerHTML]="(db.query?.sql)"></div>
+        }
+    </div>
+</ng-template>

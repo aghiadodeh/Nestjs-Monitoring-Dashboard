@@ -1,0 +1,33 @@
+<cms-view-details [result]="result">
+    <div class="db-query-view-details-container flex flex-column p-3 gap-2 f-height" content>
+        @if (result.data$ | async; as data) {
+        <div class="flex flex-column gap-2">
+            <span class="text-900 text-3xl font-meduim">
+                {{ data.id }}
+            </span>
+            @if (data.table) {
+            <span class="text-900 text-2xl font-meduim">
+                {{ 'table' | translate }}: {{ data.table }}
+            </span>
+            <p-divider />
+            }
+
+            <span class="text-900 text-2xl font-meduim">
+                {{ 'query' | translate }}:
+            </span>
+            <div class="db-query" [innerHTML]="(data.query?.sql) | language : 'sql' | markdown | async"></div>
+            <p-divider />
+
+            <span class="text-900 text-2xl font-meduim">
+                {{ 'details' | translate }}:
+            </span>
+            <div [innerHTML]="(data.details| json) | language : 'json' | markdown | async"></div>
+            <p-divider />
+
+            <span class="text-900 text-xl font-meduim">
+                {{ 'createdAt' | translate }}: {{ data.createdAt | date:"yyyy-MM-dd HH:mm":"UTC" }}
+            </span>
+        </div>
+        }
+    </div>
+</cms-view-details>

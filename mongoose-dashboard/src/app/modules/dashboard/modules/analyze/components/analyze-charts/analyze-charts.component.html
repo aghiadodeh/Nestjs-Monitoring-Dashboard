@@ -1,0 +1,20 @@
+<div class="flex flex-column justify-content-center">
+    @if (requestSuccessData) {
+    <span class="text-900 text-xl font-medium">{{ 'success_requests' | translate }}:</span>
+    <p-chart type="pie" [data]="requestSuccessData" [options]="pieOptions" width="300"></p-chart>
+    <p-divider />
+    }
+    @if (requestDurationData && requestURLsDurationData) {
+    <span class="text-900 text-xl font-medium">{{ 'requests_duration' | translate }} (ms):</span>
+    <p-chart type="line" [data]="requestDurationData" [options]="lineOptions" width="300"></p-chart>
+    <p-divider />
+
+    <span class="text-900 text-xl font-medium">{{ 'requests_duration' | translate }} (URLs):</span>
+    <p-chart type="bar" [data]="requestURLsDurationData" [options]="barOptions" width="300"></p-chart>
+    <p-divider />
+
+    <span class="text-900 text-xl font-medium">{{ 'requests_traffic' | translate }}:</span>
+    <p-chart type="line" [data]="requestCreatedAtData" [options]="lineOptions" width="300"></p-chart>
+    <p-divider />
+    }
+</div>
