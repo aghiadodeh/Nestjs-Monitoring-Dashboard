@@ -7,7 +7,7 @@ This dashboard built with [xAngular-CMS](https://www.npmjs.com/package/@x-angula
 | | |
 |:-------------------------:|:-------------------------:|
 |<img src="https://github.com/aghiadodeh/Nestjs-Monitoring-Dashboard/blob/main/screenshots/Analyze.png?raw=true">|<img src="https://github.com/aghiadodeh/Nestjs-Monitoring-Dashboard/blob/main/screenshots/Requests.png?raw=true">
-|<img src="https://github.com/aghiadodeh/Nestjs-Monitoring-Dashboard/blob/main/screenshots/Exception.png?raw=true">|<img src="https://github.com/aghiadodeh/Nestjs-Monitoring-Dashboard/blob/main/screenshots/DB.png?raw=true">
+|<img src="https://github.com/aghiadodeh/Nestjs-Monitoring-Dashboard/blob/main/screenshots/Request_Exception.png?raw=true">|<img src="https://github.com/aghiadodeh/Nestjs-Monitoring-Dashboard/blob/main/screenshots/DB.png?raw=true">
 |<img src="https://github.com/aghiadodeh/Nestjs-Monitoring-Dashboard/blob/main/screenshots/Job.png?raw=true">|<img src="https://github.com/aghiadodeh/Nestjs-Monitoring-Dashboard/blob/main/screenshots/Request_Details.png?raw=true">
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
