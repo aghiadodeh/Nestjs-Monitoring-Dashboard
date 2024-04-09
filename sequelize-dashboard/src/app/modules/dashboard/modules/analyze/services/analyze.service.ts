@@ -15,6 +15,7 @@ export class AnalyzeService extends CommonHttpService {
     }
 
     public getRequestsAnalyze(): Observable<AnalyzeRequestResponse> {
+        this.requestAnalyze.setLoading(true);
         return this.get<AnalyzeRequestResponse>('requests/analyze', { params: this.filterSchema$.value }).pipe(
             map(response => response.data),
         )
