@@ -24,6 +24,18 @@ export class QueryDetailsComponent extends ViewDetailsComponent<DatabaseQuery> {
   override title = (item: DatabaseQuery) => item.id;
 
   protected override setResult(result: DatabaseQuery): void {
+    if (typeof result.query == 'string') {
+      try {
+        result.query = JSON.parse(result.query);
+      } catch (_) { }
+    }
+
+    if (typeof result.details == 'string') {
+      try {
+        result.details = JSON.parse(result.details);
+      } catch (_) { }
+    }
+
     const sql = result.query?.sql?.toString().replace('Executing (default): ', '');
     result.query.sql = sql;
 

@@ -3,7 +3,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { DividerModule } from 'primeng/divider';
 import { MarkdownModule } from 'ngx-markdown';
 import { TranslateModule } from '@ngx-translate/core';
-import { CmsViewDetailsComponent, ViewDetailsComponent } from '@x-angular/cms';
+import { CmsViewDetailsComponent, DataResult, ViewDetailsComponent } from '@x-angular/cms';
 import { Job } from '../../models/job.model';
 
 @Component({
@@ -22,4 +22,17 @@ import { Job } from '../../models/job.model';
 })
 export class JobDetailsComponent extends ViewDetailsComponent<Job> {
   override title = (item: Job): string => `${item.name}`;
+
+  protected override setResult(result: Job): void {
+    if (typeof result.metadata == 'string') {
+      try {
+        result.metadata = JSON.parse(result.metadata);
+      } catch (_) { }
+    }
+    this.result = new DataResult(result);
+
+    setTimeout(() => {
+      this.pageTitleSerivce.setTitle(this.title(result));
+    });
+  }
 }

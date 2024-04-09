@@ -29,6 +29,19 @@ export class RequestDetailsComponent extends ViewDetailsComponent<RequestLog> {
   override title = (item: RequestLog) => item.url ?? "";
 
   protected override setResult(result: RequestLog): void {
+    // FIX: return string instead of json
+    ["request", "response", "responseHeaders"].forEach((key: string) => {
+      if (typeof (result[`${key}`]) == 'string') {
+        try {
+          result[key] = JSON.parse(result[key]);
+        } catch (_) { }
+      }
+    });
+
+    if (typeof result.request == 'string') {
+      result.request = JSON.parse(result.request)
+    }
+
     this.result = new DataResult(result);
     const { request, response } = result;
 
