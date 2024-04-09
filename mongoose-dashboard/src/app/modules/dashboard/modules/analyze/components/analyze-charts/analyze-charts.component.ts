@@ -80,13 +80,19 @@ export class AnalyzeChartsComponent extends DestroyedComponent implements OnInit
   }
 
   private initializeRequestDuration(data: AnalyzeRequestResponse): void {
-    const { duration, durationURLs } = data;
+    const { duration, durationURLs, durationBoundaries } = data;
     if (!duration || !durationURLs) return;
     const documentStyle = getComputedStyle(document.documentElement);
     const labels: string[] = [];
     const counts: number[] = [];
 
     duration.forEach(e => {
+      if (durationBoundaries) {
+        const index = durationBoundaries.findIndex(duration => duration == e._id);
+        if (index != -1 && index != durationBoundaries.length - 1) {
+          e._id = durationBoundaries[index + 1];
+        }
+      }
       labels.push(`${e._id} ms`);
       counts.push(e.count ?? 0);
     });

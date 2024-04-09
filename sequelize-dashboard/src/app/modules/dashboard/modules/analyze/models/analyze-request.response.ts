@@ -8,6 +8,7 @@ export interface AnalyzeRequestResponse {
     duration?: RequestDuration[];
     durationURLs?: RequestURLDuration[];
     createdAt?: RequestCreatedAt[];
+    durationBoundaries?: number[];
 }
 
 export interface RequestCreatedAt {
