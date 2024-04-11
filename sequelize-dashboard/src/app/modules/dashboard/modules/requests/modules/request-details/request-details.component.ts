@@ -63,7 +63,7 @@ export class RequestDetailsComponent extends ViewDetailsComponent<RequestLog> {
     delete response?.datetime;
 
     setTimeout(() => {
-      this.pageTitleSerivce.setTitle(this.title(result));
+      this.pageTitleService.setTitle(this.title(result));
     });
   }
 }

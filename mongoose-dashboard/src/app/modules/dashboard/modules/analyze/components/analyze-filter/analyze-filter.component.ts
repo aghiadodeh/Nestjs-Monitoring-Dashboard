@@ -21,7 +21,7 @@ import { AnalyzeFilterDto } from '../../dto/analyze-filter.dto';
   styleUrl: './analyze-filter.component.scss'
 })
 export class AnalyzeFilterComponent implements AfterViewInit {
-  public filterSchema = analyzeFilterSchema;
+  public filterSchema = analyzeFilterSchema();
   @ViewChild(GenericFiltersComponent) filterComponent!: GenericFiltersComponent;
 
   constructor(private analyzeService: AnalyzeService) { }

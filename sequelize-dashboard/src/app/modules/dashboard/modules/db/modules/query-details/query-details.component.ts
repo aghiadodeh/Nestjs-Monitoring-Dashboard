@@ -41,7 +41,7 @@ export class QueryDetailsComponent extends ViewDetailsComponent<DatabaseQuery> {
 
     this.result = new DataResult(result);
     setTimeout(() => {
-      this.pageTitleSerivce.setTitle(this.title(result));
+      this.pageTitleService.setTitle(this.title(result));
     });
   }
 }

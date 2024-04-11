@@ -33,7 +33,7 @@ export class JobsService extends CmsService<Job> {
     },
   };
 
-  override filterSchema: FilterSchema = jobsFilterSchema;
+  override filterSchema: FilterSchema = jobsFilterSchema();
 
   override formSchema?: FormSchema<Job> | undefined;
 

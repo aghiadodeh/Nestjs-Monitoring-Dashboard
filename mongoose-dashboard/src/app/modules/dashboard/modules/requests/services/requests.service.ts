@@ -55,8 +55,8 @@ export class RequestsService extends CmsService<RequestLog> {
         return columns;
     }
 
-    override filterSchema: RequestsFilterSchema = !this.exception ? requestsFilterSchema : {
-        ...requestsFilterSchema,
+    override filterSchema: RequestsFilterSchema = !this.exception ? requestsFilterSchema() : {
+        ...requestsFilterSchema(),
         filterDto: { ...defaultFilterDto, exception: 'true' },
     };
 

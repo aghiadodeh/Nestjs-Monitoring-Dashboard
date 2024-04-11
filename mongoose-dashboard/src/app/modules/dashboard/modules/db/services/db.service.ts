@@ -36,7 +36,7 @@ export class DbService extends CmsService<DatabaseQuery> {
         },
     };
 
-    override filterSchema: FilterSchema = dbFilterSchema;
+    override filterSchema: FilterSchema = dbFilterSchema();
 
     override formSchema?: FormSchema<DatabaseQuery> | undefined;
 

@@ -25,7 +25,7 @@
               "moment",
               "moment-timezone"
             ],
-            "outputPath": "dist/nestjs_monitoring_dashboard",
+            "outputPath": "dist/mongoose_monitoring_dashboard",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
