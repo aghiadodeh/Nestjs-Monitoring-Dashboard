@@ -14,6 +14,7 @@
     "exceptions": "Exceptions",
     "success_requests": "Success Requests",
     "requests_duration": "Requests Duration",
+    "requests_count": "Requests Count",
     "requests_traffic": "Requests Traffic",
     "duration": "Duration",
     "duration-ms": "Duration (ms)",

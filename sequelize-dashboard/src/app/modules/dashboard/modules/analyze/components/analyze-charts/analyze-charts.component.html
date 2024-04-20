@@ -4,6 +4,11 @@
     <p-chart type="pie" [data]="requestSuccessData" [options]="pieOptions" width="300"></p-chart>
     <p-divider />
     }
+    @if (requestURLsCountData) {
+        <span class="text-900 text-xl font-medium">{{ 'requests_duration' | translate }} (ms):</span>
+        <p-chart type="line" [data]="requestDurationData" [options]="lineOptions" width="300"></p-chart>
+        <p-divider />
+    }
     @if (requestDurationData && requestURLsDurationData) {
     <span class="text-900 text-xl font-medium">{{ 'requests_duration' | translate }} (ms):</span>
     <p-chart type="line" [data]="requestDurationData" [options]="lineOptions" width="300"></p-chart>

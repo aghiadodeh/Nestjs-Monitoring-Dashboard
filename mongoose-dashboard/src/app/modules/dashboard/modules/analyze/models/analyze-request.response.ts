@@ -33,6 +33,8 @@ export interface RequestDuration {
 export interface RequestURLDuration {
     max?: number;
     min?: number;
+    average?: number;
+    count?: number;
     url?: string;
     method?: string;
 }

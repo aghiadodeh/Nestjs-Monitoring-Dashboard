@@ -26,6 +26,7 @@ export class AnalyzeChartsComponent extends DestroyedComponent implements OnInit
   public requestSuccessData: any;
   public requestDurationData: any;
   public requestCreatedAtData: any;
+  public requestURLsCountData: any;
   public requestURLsDurationData: any;
 
   public barOptions: any;
@@ -99,12 +100,16 @@ export class AnalyzeChartsComponent extends DestroyedComponent implements OnInit
     const urls: string[] = [];
     const min: number[] = [];
     const max: number[] = [];
+    const average: number[] = [];
+    const requestsCount: number[] = [];
 
     durationURLs.forEach(e => {
       e.url = `${e.url}`.replace("api/", "")
       urls.push(e.method ? `${e.method} - ${e.url}` : `${e.url}`);
       min.push(e.min ?? 0);
       max.push(e.max ?? 0);
+      average.push(e.average ?? 0);
+      requestsCount.push(e.count ?? 0);
     })
 
     this.requestDurationData = {
@@ -120,6 +125,20 @@ export class AnalyzeChartsComponent extends DestroyedComponent implements OnInit
         },
       ],
     }
+
+    this.requestURLsCountData = {
+      labels: urls,
+      datasets: [
+        {
+          label: this.primeNgConfig.getTranslation('requests'),
+          fill: true,
+          data: requestsCount,
+          borderColor: documentStyle.getPropertyValue('--green-500'),
+          tension: 0.4,
+          backgroundColor: 'rgba(107, 255, 38, 0.4)'
+        },
+      ],
+    };
 
     this.requestURLsDurationData = {
       labels: urls,

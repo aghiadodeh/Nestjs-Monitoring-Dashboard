@@ -35,4 +35,6 @@ export interface RequestURLDuration {
     min?: number;
     url?: string;
     method?: string;
+    average: number;
+    count?: number;
 }
