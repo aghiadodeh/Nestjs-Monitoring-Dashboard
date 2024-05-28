@@ -7,12 +7,12 @@
         <cms-generic-filters [filterSchema]="filterSchema">
             <div class="w-full flex justify-content-end align-items-center pt-3" actions>
                 <!-- reset filters -->
-                <p-button severity="danger" [text]="true" (onClick)="resetFilters()">
+                <p-button severity="danger" [text]="true" (onClick)="resetFilters()" [disabled]="(analyzeService.requestAnalyze.loading$ | async) ?? false">
                     <span>{{ 'reset' | translate }}</span>
                 </p-button>
 
                 <!-- apply filters -->
-                <p-button [text]="true" (onClick)="applyFilters()">
+                <p-button [text]="true" (onClick)="applyFilters()" [disabled]="(analyzeService.requestAnalyze.loading$ | async) ?? false">
                     <span>{{ 'apply' | translate }}</span>
                 </p-button>
             </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnalyzeService } from './services/analyze.service';
 import { DestroyedComponent } from '@x-angular/cms';
-import { skip, takeUntil } from 'rxjs';
+import { finalize, skip, takeUntil } from 'rxjs';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { DividerModule } from 'primeng/divider';
 import { AnalyzeFilterComponent } from './components/analyze-filter/analyze-filter.component';
@@ -40,7 +40,10 @@ export class AnalyzeComponent extends DestroyedComponent implements OnInit {
 
   private getRequestsAnalyze(): void {
     this.analyzeService.getRequestsAnalyze()
-      .pipe(takeUntil(this.destroyed))
+      .pipe(
+        takeUntil(this.destroyed),
+        finalize(() => this.analyzeService.requestAnalyze.setLoading(false))
+      )
       .subscribe({
         next: (data) => {
           this.analyzeService.requestAnalyze.setData(data);

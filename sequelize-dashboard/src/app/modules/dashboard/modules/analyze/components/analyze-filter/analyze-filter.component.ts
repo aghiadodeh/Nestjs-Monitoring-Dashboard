@@ -7,11 +7,13 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AnalyzeService } from '../../services/analyze.service';
 import moment from 'moment-timezone';
 import { AnalyzeFilterDto } from '../../dto/analyze-filter.dto';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-analyze-filter',
   standalone: true,
   imports: [
+    CommonModule,
     ButtonModule,
     AccordionModule,
     TranslateModule,
@@ -24,7 +26,7 @@ export class AnalyzeFilterComponent implements AfterViewInit {
   public filterSchema = analyzeFilterSchema();
   @ViewChild(GenericFiltersComponent) filterComponent!: GenericFiltersComponent;
 
-  constructor(private analyzeService: AnalyzeService) { }
+  constructor(public analyzeService: AnalyzeService) { }
 
   ngAfterViewInit(): void {
     this.applyFilters();
