@@ -3,6 +3,7 @@ import { CRUDConfiguration, CmsActionEnum, CmsService, FilterSchema, FormSchema 
 import { Job } from '../models/job.model';
 import { DatePipe } from '@angular/common';
 import { jobsFilterSchema } from '../configurations/job-filter.schema';
+import moment from 'moment';
 
 @Injectable()
 export class JobsService extends CmsService<Job> {
@@ -39,7 +40,7 @@ export class JobsService extends CmsService<Job> {
 
   override mapFetchedData = (data: Job[]): Job[] => {
     data.forEach(item => {
-      item.createdAt = this.datePipe.transform(item.createdAt, "yyyy-MM-dd HH:mm", "UTC")
+      item.createdAt = this.datePipe.transform(item.createdAt, "yyyy-MM-dd HH:mm", moment.tz.guess())
     });
     return data;
   };

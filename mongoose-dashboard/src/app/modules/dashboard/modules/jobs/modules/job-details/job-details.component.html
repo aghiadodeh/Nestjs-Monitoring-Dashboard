@@ -14,7 +14,7 @@
 
             @if (data.metadata; as metadata) {
                 @for (data of metadata; track data) {
-                    <div [innerHTML]="(data | json) | language : 'json' | markdown | async"></div>
+                    <div [innerHTML]="(data | newlineJson) | language : 'json' | markdown | async"></div>
                 }
             }
 

@@ -4,6 +4,7 @@ import { RequestLog } from "../models/request.model";
 import { RequestsFilterSchema, requestsFilterSchema } from "../configurations/requests-filter.schema";
 import { DatePipe } from "@angular/common";
 import { ActivatedRoute } from "@angular/router";
+import moment from "moment";
 
 @Injectable()
 export class RequestsService extends CmsService<RequestLog> {
@@ -64,7 +65,7 @@ export class RequestsService extends CmsService<RequestLog> {
 
     override mapFetchedData = (data: RequestLog[]): RequestLog[] => {
         data.forEach(request => {
-            request.createdAt = this.datePipe.transform(request.createdAt, "yyyy-MM-dd HH:mm", "UTC")
+            request.createdAt = this.datePipe.transform(request.createdAt, "yyyy-MM-dd HH:mm",  moment.tz.guess())
         });
         return data;
     };

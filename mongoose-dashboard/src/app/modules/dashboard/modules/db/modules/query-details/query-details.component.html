@@ -5,13 +5,16 @@
             <span class="text-900 text-3xl font-meduim">
                 {{ data.collectionName }}.{{ data.method }}{{"()"}}:
             </span>
-            <div [innerHTML]="(data.collectionName + '.' + data.method + '(' + (data.query ? (data.query | json) + ', '  : '') + (data.options ? (data.options | json) : '') + ')') 
+            <div [innerHTML]="(data.collectionName + '.' + data.method + '(' + (data.query ? (data.query | json) + ', '  : '') + (data.options ? (data.options | json) : '') + (data.update ? (data.update | json) + ', '  : '') + ')') 
                 | language : 'typescript'
                 | markdown
                 | async">
             </div>
             <span class="text-900 text-xl font-meduim">
                 {{ 'createdAt' | translate }}: {{ data.createdAt | date:"yyyy-MM-dd HH:mm":"UTC" }}
+            </span>
+            <span class="text-900 text-xl font-meduim">
+                {{ 'duration' | translate }}: {{ data.duration }}{{"ms"}}
             </span>
         </div>
         }

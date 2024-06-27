@@ -27,3 +27,11 @@ cms-navigation-menu {
         background: unset !important;
     }
 }
+
+.job-view-details-container {
+    pre {
+        code {
+            white-space: break-spaces !important;
+        }
+    }
+}

@@ -24,6 +24,7 @@ export class DbService extends CmsService<DatabaseQuery> {
                 { key: 'collectionName', title: 'collection_name' },
                 { key: 'method', title: 'method' },
                 { key: 'query', title: 'query', templateRef: true },
+                { key: 'duration', title: 'duration' },
                 { key: 'createdAt', title: 'createdAt' },
             ],
             actions: () => [

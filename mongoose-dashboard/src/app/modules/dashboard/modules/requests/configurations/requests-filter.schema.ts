@@ -49,6 +49,16 @@ export const requestsFilterSchema = (): RequestsFilterSchema => {
                     options: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
                 },
             },
+            {
+                key: 'durationGt',
+                label: 'durationGt',
+                inputType: FilterInputType.text,
+            },
+            {
+                key: 'durationLt',
+                label: 'durationLt',
+                inputType: FilterInputType.text,
+            },
         ],
     };
 }

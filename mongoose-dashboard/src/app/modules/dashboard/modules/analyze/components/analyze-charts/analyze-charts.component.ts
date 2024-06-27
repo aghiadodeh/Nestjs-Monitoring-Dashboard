@@ -94,7 +94,8 @@ export class AnalyzeChartsComponent extends DestroyedComponent implements OnInit
           e._id = durationBoundaries[index + 1];
         }
       }
-      labels.push(`${e._id} ms`);
+      const id = e._id ?? 0;
+      labels.push(`${id >= 1000 ? id / 1000 : id} ${(e._id ?? 0) >= 1000 ? "sec" : "ms"}`);
       counts.push(e.count ?? 0);
     });
 

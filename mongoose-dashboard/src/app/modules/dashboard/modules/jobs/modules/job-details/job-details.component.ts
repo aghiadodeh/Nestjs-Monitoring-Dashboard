@@ -5,6 +5,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { TranslateModule } from '@ngx-translate/core';
 import { CmsViewDetailsComponent, ViewDetailsComponent } from '@x-angular/cms';
 import { Job } from '../../models/job.model';
+import { NewlineJsonPipe } from '../../../../../../core/pipes/newline-json.pipe';
 
 @Component({
   selector: 'app-job-details',
@@ -16,10 +17,15 @@ import { Job } from '../../models/job.model';
     MarkdownModule,
     TranslateModule,
     CmsViewDetailsComponent,
+    NewlineJsonPipe,
   ],
   templateUrl: './job-details.component.html',
   styleUrl: './job-details.component.scss'
 })
 export class JobDetailsComponent extends ViewDetailsComponent<Job> {
   override title = (item: Job): string => `${item.name}`;
+
+  protected override setResult(result: Job): void {
+    super.setResult(result);
+  }
 }
