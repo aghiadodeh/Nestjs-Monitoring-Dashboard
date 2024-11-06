@@ -265,16 +265,17 @@ export class AnalyzeChartsComponent extends DestroyedComponent implements OnInit
   }
 
   private transformDate(date: string): string {
+    const timezone = moment.tz.guess();
     const { fromDate, toDate } = this.analyzeService.filterSchema$.value;
     if (fromDate && toDate) {
       if (moment(fromDate).isSame(toDate, 'hour')) {
-        return moment(date).format('HH:mm');
+        return moment.tz(date, timezone).format('HH:mm');
       } else if (moment(fromDate).isSame(toDate, 'day') || moment(toDate).diff(fromDate, 'hour') < 25) {
-        return moment(date).format('yyyy/MM/DD HH:mm');
+        return moment.tz(date, timezone).format('yyyy/MM/DD HH:mm');
       } else if (moment(fromDate).isSame(toDate, 'month')) {
-        return moment(date).format('yyyy/MM/DD');
+        return moment.tz(date, timezone).format('yyyy/MM/DD');
       } else {
-        return moment(date).format('yyyy/MM/DD HH:mm');
+        return moment.tz(date, timezone).format('yyyy/MM/DD HH:mm');
       }
     }
     return date;
